@@ -4,6 +4,7 @@ import './App.css';
 
 import { CardList } from "./components/card-list/card-list.component";
 import { CardListNew } from "./components/card-list/card-list.component";
+import { SearchBox } from "./components/search-box/search-box.component.jsx";
 
 class App extends Component{
   constructor(){
@@ -13,6 +14,8 @@ class App extends Component{
       monstersNew : [],
       searchField: ''
   };
+
+  // this.handleChange = this.handleChange.bind(this);
 }
 
 componentDidMount(){
@@ -21,6 +24,13 @@ componentDidMount(){
   .then(users => this.setState( { monstersNew:users } ))
 }
 
+  // handleChange = (e) => {
+  // this.setState({ searchField: e.target.value });
+  // }
+
+  handleChange = (e) => {
+    this.setState({ searchField : e.target.value });
+  }
 
   render(){
 
@@ -28,7 +38,7 @@ componentDidMount(){
     // const fieldMonster = monstersNew.filter(monstersNew => monstersNew.name.toLowerCase().includes(searchField.toLowerCase()));
 
     const {monstersNew, searchField} = this.state;
-    const fieldMonster = monstersNew.filter(
+    const filteredMonsterNew = monstersNew.filter(
       monstersNew => 
       monstersNew.name.toLowerCase().includes(searchField.toLowerCase()
         ));
@@ -42,13 +52,13 @@ componentDidMount(){
           e => { this.setState({ searchField: e.target.value });
           console.log(this.state)
         }} /> */}
-        <input type="search" placeholder="Search Monster" onChange= {
-          e => { 
-          this.setState ( { searchField : e.target.value }, 
-          () => console.log(this.state) );
-           }} />
+       
         {/* <CardList monstersNew={this.state.monstersNew} /> */}
-        <CardList monstersNew={fieldMonster} />
+        {/* <CardList monstersNew={fieldMonster} /> */}
+        {/* <SearchBox placeholder='Search Monster' handleChange = { e => this.setState({ searchField: e.target.value })}/> */}
+        <SearchBox placeholder='Search Monster' handleChange = {this.handleChange}/>
+        {/* We must need to add that handle functio into the above before the render function */}
+        <CardList monstersNew={filteredMonsterNew}/>
       </div>
     );
   }
