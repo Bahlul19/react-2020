@@ -45,6 +45,7 @@ componentDidMount(){
 
     return (
       <div className="App">
+        <h1>Monster Rolodex</h1>
         {/* <input type="search" placeholder="Search Monster" 
         onChange={ e => console.log(e.target.value)}></input> */}
          {/* <input type="search" placeholder="Search Monster" 
