@@ -2,7 +2,7 @@
   "name": "monstar",
   "version": "0.1.0",
   "private": true,
-  "homepahe": "https://bahlul19.github.io/monster-project",
+  "homepage": "https://bahlul19.github.com/react-2020",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
